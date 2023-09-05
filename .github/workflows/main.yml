@@ -77,8 +77,5 @@ jobs:
         docker push ${{ secrets.DOCKER_USERNAME }}/iris-classifier:latest
 
     
-      uses: akhileshns/heroku-deploy@v3.12.12
-      with:
-        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-        heroku_app_name: your-heroku-app-name
+     
 
