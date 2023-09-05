@@ -44,4 +44,3 @@ jobs:
 
     - name: Test the model
       run: docker run -v $(pwd):/app iris-classifier python -c "import joblib; model = joblib.load('model.pkl'); print(model.predict([[5.1, 3.5, 1.4, 0.2]]))"
-
