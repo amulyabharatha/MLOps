@@ -36,18 +36,6 @@ jobs:
          FULL_PATH=$(readlink -f model.pkl)  
          echo $FULL_PATH
 
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x' # Specify your Python version
-
     - name: Download model artifact
       uses: actions/download-artifact@v2
       with:
