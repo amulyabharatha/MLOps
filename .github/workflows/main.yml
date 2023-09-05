@@ -29,6 +29,11 @@ jobs:
       with:
         name: trained-model
         path: model.pkl
+    - name: Debug Artifact
+      run: |
+         ls -R  # List files recursively
+         find . -name model.pkl  # Find the model.pkl file
+    
 
   test:
     runs-on: ubuntu-latest
