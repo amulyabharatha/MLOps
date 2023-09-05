@@ -51,7 +51,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: trained-model
-        path: model.pkl
+        path: .
 
     - name: Test the model
       run: python test.py
