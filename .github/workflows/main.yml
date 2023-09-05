@@ -67,6 +67,18 @@ jobs:
              
     - name: Build Docker Image
       run: docker build -t iris-classifier .
+      
+    - name: Upload model artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: trained-model-docker
+        path: .
+    - name: Debug Artifact
+      run: |
+         ls -R  # List files recursively
+         find . -name model.pkl  # Find the model.pkl file
+         FULL_PATH=$(readlink -f model.pkl)  
+         echo $FULL_PATH  
 
   deploy:
     runs-on: ubuntu-latest
@@ -78,7 +90,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: trained-model
-        path: ./$FULL_PATH
+        path: .
         
     - name: Log in to Docker Hub
       run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
