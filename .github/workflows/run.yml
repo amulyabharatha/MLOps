@@ -5,15 +5,14 @@ jobs:
     runs-on: [ubuntu-latest]
     container: docker://dvcorg/cml-py3:latest
     steps:
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x' # Specify your Python version 
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: pip install -r requirements.txt    
       - name: 'Train my model'
         run: |
 
           # Your ML workflow goes here
-          pip install -r requirements.txt
           python model2.py
           
           echo "## Model Metrics" > report.md
