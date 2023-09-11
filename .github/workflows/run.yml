@@ -10,6 +10,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt    
       - name: 'Train my model'
+        env:
+          repo_token: ${{ secrets.ML_TOKEN }}
         run: |
 
           # Your ML workflow goes here
